@@ -1,0 +1,28 @@
+{
+	"name": "HdCluster_LS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "HDInsightOnDemand",
+		"typeProperties": {
+			"clusterType": "hadoop",
+			"clusterSize": 4,
+			"timeToLive": "00:05:00",
+			"version": "3.6",
+			"hostSubscriptionId": "108a32dd-d9d1-49ae-9e12-03f2c5511a6d",
+			"clusterResourceGroup": "hdInsightCluster",
+			"servicePrincipalId": "182d48cd-2cf4-4e43-bb37-a88a1a40f7c8",
+			"tenant": "a7454b35-d7f2-4618-9b9e-30f5c0e73d4a",
+			"clusterNamePrefix": "",
+			"linkedServiceName": {
+				"referenceName": "Storage_Staging",
+				"type": "LinkedServiceReference"
+			},
+			"headNodeSize": "",
+			"dataNodeSize": "",
+			"zookeeperNodeSize": "",
+			"subnetName": "",
+			"virtualNetworkId": "",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkFERkxBQi1BSVNfYmE1NmRiZDUtMTM4YS00NTJiLWEzN2QtMTQyMDg0OWZiZmY3Ig0KfQ=="
+		}
+	}
+}
