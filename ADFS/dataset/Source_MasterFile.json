@@ -1,0 +1,160 @@
+{
+	"name": "Source_MasterFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Source",
+			"type": "LinkedServiceReference"
+		},
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "MASTER201612.csv",
+				"container": "blobsource"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "N-Number",
+				"type": "String"
+			},
+			{
+				"name": "Serial Number",
+				"type": "String"
+			},
+			{
+				"name": "MFR MDL Code",
+				"type": "String"
+			},
+			{
+				"name": "Eng MFR Code",
+				"type": "String"
+			},
+			{
+				"name": "Year MFR",
+				"type": "String"
+			},
+			{
+				"name": "Type Registrant",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Street 1",
+				"type": "String"
+			},
+			{
+				"name": "Street2",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "ZIP",
+				"type": "String"
+			},
+			{
+				"name": "Region",
+				"type": "String"
+			},
+			{
+				"name": "County ",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "Last Activity Date",
+				"type": "String"
+			},
+			{
+				"name": "Cert Issue Date",
+				"type": "String"
+			},
+			{
+				"name": "Certification Requested ",
+				"type": "String"
+			},
+			{
+				"name": "Type Aircraft",
+				"type": "String"
+			},
+			{
+				"name": "Type Engine",
+				"type": "String"
+			},
+			{
+				"name": "Status Code",
+				"type": "String"
+			},
+			{
+				"name": "Mode S Code",
+				"type": "String"
+			},
+			{
+				"name": "Fractional  Ownership",
+				"type": "String"
+			},
+			{
+				"name": "Airworthiness Date",
+				"type": "String"
+			},
+			{
+				"name": "Other Name 1",
+				"type": "String"
+			},
+			{
+				"name": "Other Name 2",
+				"type": "String"
+			},
+			{
+				"name": "Other Name 3",
+				"type": "String"
+			},
+			{
+				"name": "Other Name 4",
+				"type": "String"
+			},
+			{
+				"name": "Other Name 5",
+				"type": "String"
+			},
+			{
+				"name": "Expiration Date",
+				"type": "String"
+			},
+			{
+				"name": "Unique ID",
+				"type": "String"
+			},
+			{
+				"name": "Kit MFR Code",
+				"type": "String"
+			},
+			{
+				"name": "Kit Model",
+				"type": "String"
+			},
+			{
+				"name": "Mose S Code Hex",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

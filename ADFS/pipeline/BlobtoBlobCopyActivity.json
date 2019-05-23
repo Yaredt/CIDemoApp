@@ -1,0 +1,491 @@
+{
+	"name": "BlobtoBlobCopyActivity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Blob to Blob Copy",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSetting"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSetting"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSetting",
+							"copyBehavior": "MergeFiles"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSetting",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "N-Number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "N-Number",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Serial Number",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Serial Number",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFR MDL Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MFR MDL Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Eng MFR Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Eng MFR Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Year MFR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Year MFR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type Registrant",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Type Registrant",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Street 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Street2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Street2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ZIP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ZIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "County ",
+									"type": "String"
+								},
+								"sink": {
+									"name": "County ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Country",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Last Activity Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Last Activity Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Cert Issue Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Cert Issue Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Certification Requested ",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Certification Requested ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type Aircraft",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Type Aircraft",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type Engine",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Type Engine",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Status Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Mode S Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Mode S Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fractional  Ownership",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fractional  Ownership",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Airworthiness Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Airworthiness Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Other Name 1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Other Name 1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Other Name 2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Other Name 2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Other Name 3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Other Name 3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Other Name 4",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Other Name 4",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Other Name 5",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Other Name 5",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Expiration Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Expiration Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Unique ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Unique ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Kit MFR Code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Kit MFR Code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Kit Model",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Kit Model",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Mose S Code Hex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Mose S Code Hex",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Source_MasterFile",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Storage_Staging_FAA",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Send Success Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Blob to Blob Copy",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"url": "https://prod-16.eastus2.logic.azure.com:443/workflows/4524f1b190a24aea880e81af684ac682/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Smo_se9sgO7FjsG9h3ttlf-uNw6llHyS2uSt7GE0QTo",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"dataFactoryName": "@{pipeline().DataFactory}",
+						"successtype": "Succeeded",
+						"message": "@{activity('Blob to Blob Copy').output.dataWritten}",
+						"pipelineName": "@{pipeline().Pipeline}",
+						"recipient": "@{pipeline().parameters.recipient}"
+					}
+				}
+			},
+			{
+				"name": "Send Failure Email",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Blob to Blob Copy",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"url": "https://prod-16.eastus2.logic.azure.com:443/workflows/4524f1b190a24aea880e81af684ac682/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Smo_se9sgO7FjsG9h3ttlf-uNw6llHyS2uSt7GE0QTo",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"dataFactoryName": "@{pipeline().DataFactory}",
+						"successtype": "Failed",
+						"message": "@{activity('Blob to Blob Copy').error.message}",
+						"pipelineName": "@{pipeline().Pipeline}",
+						"recipient": "@{pipeline().parameters.recipient}"
+					}
+				}
+			},
+			{
+				"name": "Execute Weather Activity",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Send Success Email",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Weather to Blob Copy",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"recipient": {
+				"type": "string",
+				"defaultValue": "yared.tsegaye@appliedis.com"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

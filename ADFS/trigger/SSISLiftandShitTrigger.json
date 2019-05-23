@@ -1,0 +1,23 @@
+{
+	"name": "SSISLiftandShitTrigger",
+	"properties": {
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "SSISLiftAndShift",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2019-05-22T16:45:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
