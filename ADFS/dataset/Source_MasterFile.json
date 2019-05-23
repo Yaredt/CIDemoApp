@@ -2,15 +2,16 @@
 	"name": "Source_MasterFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage_Source",
+			"referenceName": "Storage_Staging",
 			"type": "LinkedServiceReference"
 		},
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "MASTER201612.csv",
-				"container": "blobsource"
+				"fileName": "FAAmaster.txt",
+				"folderPath": "FAAmaster",
+				"container": "input"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
