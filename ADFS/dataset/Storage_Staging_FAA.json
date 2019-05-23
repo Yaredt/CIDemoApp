@@ -9,8 +9,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "FAAmaster.txt",
-				"folderPath": "FAAmaster",
+				"fileName": "FAAaircraft.txt",
+				"folderPath": "FAAaircraft",
 				"container": "input"
 			},
 			"columnDelimiter": ",",
