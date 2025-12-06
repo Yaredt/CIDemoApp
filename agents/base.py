@@ -6,7 +6,7 @@ import logging
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from agents.models import Lead, AgentExecutionResult
 
@@ -15,6 +15,8 @@ logger = logging.getLogger(__name__)
 
 class AgentConfig(BaseModel):
     """Configuration for an agent"""
+    model_config = ConfigDict(extra="allow")
+
     name: str
     description: str
     enabled: bool = True
@@ -32,9 +34,6 @@ class AgentConfig(BaseModel):
 
     # Additional agent-specific config
     custom_config: Dict[str, Any] = Field(default_factory=dict)
-
-    class Config:
-        extra = "allow"
 
 
 class BaseAgent(ABC):

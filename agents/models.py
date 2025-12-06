@@ -5,7 +5,7 @@ Data models for the multi-agent lead generation system
 from datetime import datetime
 from enum import Enum
 from typing import Dict, List, Optional, Any
-from pydantic import BaseModel, Field, HttpUrl, validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator, ConfigDict
 
 
 class Industry(str, Enum):
@@ -51,16 +51,8 @@ class BuyingSignal(str, Enum):
 
 class Contact(BaseModel):
     """Contact information for a lead"""
-    name: Optional[str] = None
-    title: Optional[str] = None
-    email: Optional[str] = None
-    phone: Optional[str] = None
-    linkedin_url: Optional[HttpUrl] = None
-    department: Optional[str] = None
-    seniority_level: Optional[str] = None  # C-Level, VP, Director, Manager
-
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "name": "John Smith",
                 "title": "CTO",
@@ -69,6 +61,15 @@ class Contact(BaseModel):
                 "seniority_level": "C-Level"
             }
         }
+    )
+
+    name: Optional[str] = None
+    title: Optional[str] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    linkedin_url: Optional[HttpUrl] = None
+    department: Optional[str] = None
+    seniority_level: Optional[str] = None  # C-Level, VP, Director, Manager
 
 
 class TechnologyIndicator(BaseModel):
@@ -84,6 +85,20 @@ class TechnologyIndicator(BaseModel):
 
 class Company(BaseModel):
     """Company information"""
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "name": "ABC Bank",
+                "industry": "banking",
+                "website": "https://abcbank.com",
+                "size": "Enterprise",
+                "revenue": "$1B+",
+                "employee_count": 5000,
+                "fdic_cert_number": "12345"
+            }
+        }
+    )
+
     name: str
     industry: Industry
     website: Optional[HttpUrl] = None
@@ -108,19 +123,6 @@ class Company(BaseModel):
     linkedin_url: Optional[HttpUrl] = None
     twitter_handle: Optional[str] = None
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "name": "ABC Bank",
-                "industry": "banking",
-                "website": "https://abcbank.com",
-                "size": "Enterprise",
-                "revenue": "$1B+",
-                "employee_count": 5000,
-                "fdic_cert_number": "12345"
-            }
-        }
-
 
 class LeadScore(BaseModel):
     """Lead scoring information"""
@@ -138,12 +140,14 @@ class LeadScore(BaseModel):
     # Reasoning
     scoring_factors: Dict[str, Any] = Field(default_factory=dict)
 
-    @validator('overall_score', pre=True, always=True)
-    def calculate_overall_score(cls, v, values):
+    @field_validator('overall_score', mode='before')
+    @classmethod
+    def calculate_overall_score(cls, v, info):
         """Calculate overall score from components"""
         if v is not None:
             return v
         # Weighted average: 40% fit, 35% intent, 25% timing
+        values = info.data
         fit = values.get('fit_score', 0)
         intent = values.get('intent_score', 0)
         timing = values.get('timing_score', 0)
@@ -152,6 +156,22 @@ class LeadScore(BaseModel):
 
 class Lead(BaseModel):
     """Complete lead information"""
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {
+                "id": "lead_abc123",
+                "company": {
+                    "name": "ABC Bank",
+                    "industry": "banking",
+                    "website": "https://abcbank.com"
+                },
+                "source_agent": "banking_agent",
+                "status": "new",
+                "buying_signals": ["job_posting", "technology_initiative"]
+            }
+        }
+    )
+
     id: str
     company: Company
     contacts: List[Contact] = Field(default_factory=list)
@@ -185,21 +205,6 @@ class Lead(BaseModel):
     notes: List[str] = Field(default_factory=list)
     tags: List[str] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(default_factory=dict)
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "id": "lead_abc123",
-                "company": {
-                    "name": "ABC Bank",
-                    "industry": "banking",
-                    "website": "https://abcbank.com"
-                },
-                "source_agent": "banking_agent",
-                "status": "new",
-                "buying_signals": ["job_posting", "technology_initiative"]
-            }
-        }
 
 
 class AgentExecutionResult(BaseModel):
