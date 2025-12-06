@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  lead-gen-agents:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile
+    container_name: lead-gen-agents
+    env_file:
+      - ../../.env
+    volumes:
+      - lead-data:/app/data
+      - ../../logs:/app/logs
+    restart: unless-stopped
+    command: run
+    networks:
+      - lead-gen-network
+
+  # Optional: Local Cosmos DB Emulator for development
+  cosmos-emulator:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    container_name: cosmos-emulator
+    environment:
+      - AZURE_COSMOS_EMULATOR_PARTITION_COUNT=10
+      - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
+    ports:
+      - "8081:8081"
+      - "10251:10251"
+      - "10252:10252"
+      - "10253:10253"
+      - "10254:10254"
+    volumes:
+      - cosmos-data:/data
+    networks:
+      - lead-gen-network
+    profiles:
+      - dev
+
+volumes:
+  lead-data:
+  cosmos-data:
+
+networks:
+  lead-gen-network:
+    driver: bridge
