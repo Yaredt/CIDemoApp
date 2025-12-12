@@ -1,0 +1,66 @@
+# Core Dependencies
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Microsoft Agent Framework SDK
+azure-ai-agent>=0.1.0
+openai>=1.10.0
+
+# Azure Services
+azure-identity>=1.15.0
+azure-keyvault-secrets>=4.7.0
+azure-cosmos>=4.5.0
+azure-storage-blob>=12.19.0
+azure-monitor-opentelemetry>=1.2.0
+azure-core>=1.29.0
+
+# OpenAI and AI
+openai>=1.10.0
+tiktoken>=0.5.2
+
+# Data Processing
+pandas>=2.1.0
+numpy>=1.26.0
+python-dateutil>=2.8.2
+
+# HTTP and APIs
+requests>=2.31.0
+httpx>=0.25.0
+aiohttp>=3.9.0
+backoff>=2.2.1
+
+# Database and Storage
+pymongo>=4.6.0
+
+# Logging and Monitoring
+structlog>=24.1.0
+python-json-logger>=2.0.7
+
+# Rate Limiting and Caching
+ratelimit>=2.2.1
+cachetools>=5.3.0
+tenacity>=8.2.3
+
+# Configuration Management
+python-decouple>=3.8
+pyyaml>=6.0.1
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+faker>=22.0.0
+
+# Development Tools
+black>=23.12.0
+flake8>=7.0.0
+mypy>=1.8.0
+isort>=5.13.0
+pre-commit>=3.6.0
+
+# Utilities
+click>=8.1.7
+rich>=13.7.0
+tqdm>=4.66.0
