@@ -1,0 +1,42 @@
+{
+	"name": "MergeFAA",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "FAAMasterFile_DF",
+						"type": "DatasetReference"
+					},
+					"name": "FAAmasterFile",
+					"script": "source(output(\n\t\t{N-Number} as string,\n\t\t{Serial Number} as string,\n\t\t{MFR MDL Code} as string,\n\t\t{Eng MFR Code} as string,\n\t\t{Year MFR} as string,\n\t\t{Type Registrant} as string,\n\t\tName as string,\n\t\t{Street 1} as string,\n\t\tStreet2 as string,\n\t\tCity as string,\n\t\tState as string,\n\t\tZIP as string,\n\t\tRegion as string,\n\t\t{County } as string,\n\t\tCountry as string,\n\t\t{Last Activity Date} as string,\n\t\t{Cert Issue Date} as string,\n\t\t{Certification Requested } as string,\n\t\t{Type Aircraft} as string,\n\t\t{Type Engine} as string,\n\t\t{Status Code} as string,\n\t\t{Mode S Code} as string,\n\t\t{Fractional  Ownership} as string,\n\t\t{Airworthiness Date} as string,\n\t\t{Other Name 1} as string,\n\t\t{Other Name 2} as string,\n\t\t{Other Name 3} as string,\n\t\t{Other Name 4} as string,\n\t\t{Other Name 5} as string,\n\t\t{Expiration Date} as string,\n\t\t{Unique ID} as string,\n\t\t{Kit MFR Code} as string,\n\t\t{Kit Model} as string,\n\t\t{Mose S Code Hex} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> FAAmasterFile"
+				},
+				{
+					"dataset": {
+						"referenceName": "Storage_Staging_FAA",
+						"type": "DatasetReference"
+					},
+					"name": "FAAaircraftFile",
+					"script": "source(output(\n\t\t{MFR-NAME} as string,\n\t\t{TYPE-AIRCRAFT} as string,\n\t\t{TYPE-ENGINE} as string,\n\t\t{AC-CATEGORY} as string,\n\t\t{AMAC-TC-BUILT} as string,\n\t\t{NUMBER-ENGINES} as string,\n\t\t{NUMBER-SEATS} as string,\n\t\t{AC-WEIGHT} as string,\n\t\tSPEED as string,\n\t\t{MFR-MDL-CODE} as string,\n\t\t{KIT-CODE} as string,\n\t\tEMPTY as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100) ~> FAAaircraftFile"
+				}
+			],
+			"sinks": [
+				{
+					"name": "FAAMerge",
+					"script": "Select1 sink() ~> FAAMerge"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Join1",
+					"script": "FAAmasterFile, FAAaircraftFile join({MFR MDL Code} == {MFR-MDL-CODE},\n\tjoinType:'inner',\n\tbroadcast: 'none')~> Join1"
+				},
+				{
+					"name": "Select1",
+					"script": "Join1 select(mapColumn(\n\t\t{N-Number},\n\t\t{Serial Number},\n\t\t{Year MFR},\n\t\tName,\n\t\t{Mode S Code},\n\t\t{Airworthiness Date},\n\t\t{MFR-NAME},\n\t\t{NUMBER-ENGINES},\n\t\t{NUMBER-SEATS}\n\t))~> Select1"
+				}
+			]
+		}
+	}
+}

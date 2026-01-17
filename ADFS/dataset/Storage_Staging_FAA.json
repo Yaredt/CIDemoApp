@@ -1,0 +1,73 @@
+{
+	"name": "Storage_Staging_FAA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Storage_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "FAAaircraft.txt",
+				"folderPath": "FAAaircraft",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "MFR-NAME",
+				"type": "String"
+			},
+			{
+				"name": "TYPE-AIRCRAFT",
+				"type": "String"
+			},
+			{
+				"name": "TYPE-ENGINE",
+				"type": "String"
+			},
+			{
+				"name": "AC-CATEGORY",
+				"type": "String"
+			},
+			{
+				"name": "AMAC-TC-BUILT",
+				"type": "String"
+			},
+			{
+				"name": "NUMBER-ENGINES",
+				"type": "String"
+			},
+			{
+				"name": "NUMBER-SEATS",
+				"type": "String"
+			},
+			{
+				"name": "AC-WEIGHT",
+				"type": "String"
+			},
+			{
+				"name": "SPEED",
+				"type": "String"
+			},
+			{
+				"name": "MFR-MDL-CODE",
+				"type": "String"
+			},
+			{
+				"name": "KIT-CODE",
+				"type": "String"
+			},
+			{
+				"name": "EMPTY",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

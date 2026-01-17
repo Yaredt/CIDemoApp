@@ -1,0 +1,44 @@
+{
+	"name": "DestinationDataset_Weather",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Storage_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "201612-WeatherData.txt",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "_id",
+				"type": "String"
+			},
+			{
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "dateint",
+				"type": "String"
+			},
+			{
+				"name": "airport",
+				"type": "String"
+			},
+			{
+				"name": "temp",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
